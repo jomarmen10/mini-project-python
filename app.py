@@ -1,10 +1,13 @@
 from flask import Flask, g
 import models
 
+from resources.users import users_api
+
 DEBUG = True
 PORT = 8000
 
 app = Flask(__name__)
+app.register_blueprint(users_api, url_prefix='/api/v1')
 
 @app.before_request
 def before_request():
